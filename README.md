@@ -3,6 +3,9 @@
 
 - Update README --ox--
     - https://gist.github.com/madhat5
+    - outline app
+        - layout/user story
+        - identify gems/frameworks to use
 
 - App --x--
     - app setup (rails new name_app -d postgresql)
