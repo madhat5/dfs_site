@@ -53,7 +53,6 @@
             - note 
                 - index (all notes page) --x--
                 - show --x-- individual note page
-                - 
 
 - Views --o--
     - INDEX/SHOW/CREATE only to start
