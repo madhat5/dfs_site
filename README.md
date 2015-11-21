@@ -1,77 +1,217 @@
-# dfs_site
+---
+---
+DFS
+---
+
+- Members:
+    - David
+---
+
+Links:
+
+- Project:
+    - GitHub
+        - 
+    - Heroku
+        - 
+
+- API's
+    - http://espn.go.com/apis/devcenter/docs/
+    - https://developer.yahoo.com/fantasysports/
+    - http://developer.cbssports.com/documentation/api/files/sports
+---
+Technical Requirements:
+
+---
+Timeline goals:
+
+Trello link: 
+
+Wireframes: 
+
+Git flow:
+
+- Justin is Czar
+- Steps:
+    - git clone (SSH key)
+    - Justin merges end of day
+    - Team creates 1 branch per file task
+        - from master
+            - git checkout -b name_feature
+    - Team pushes by end of day 
+        - from branch
+            - git add .
+            - git commit -m "update details"
+            - git push origin name_feature
+        - slack note when pushed
+    - Team pulls @ beginning of day
+        - from master
+            - git pull origin master
+
+---
+User story:
+
+MVP:
+
+- MOAR MODALS!!!
+
+- landing page:
+    - map
+        - modal for location details
+        - cannot add location until logged in
+    - log in button
+        - > opens user page
+    - register buton
+        - > opens register form
+
+- user page
+    - map
+        - modal dislpays
+            - task
+            - location
+            - details
+            - button add to to-do
+    - to do list (div)
+        - task
+        - button complete
+            - complete pushes to Done
+    - user updates button
+        displays form 
+        - edit
+        - 
+    - logout
 
 
-- Update README --ox--
-    - https://gist.github.com/madhat5
-    - outline app
-        - layout/user story
-        - identify gems/frameworks to use
++features:
 
-- App --x--
-    - app setup (rails new name_app -d postgresql)
-    - ensure dependencies (bundle install)
-    - add gems (devise, pry-rails)
+- 
 
-- User authentification --o--
-    - Devise (rails g devise:install)
-    - Update enviromnment (config/environments/development.rb)
-    - Update application view (app/views/layouts/application.html.erb)
-    - user model generate (rails g devise user >> rake db:create >> rake db:migrate)
-    - update aplication (app/views/layouts/application.html.erb)
-    - force not logged redirect (app/controllers/application_controller.rb)
-    - copy all views to application (rails g devise:views)
-    - update routes (config/routes.rb)
 
-- Visual framework 
-    - (skeleton, bootstrap, foundation, etc)
 
-- Database --x-- 
-    - database create/check (rake db:create >> rails dbconsole)
-    - model create (rails g model Name >> rails g controller names)
-        - x#tables
-    - update migration files (db/migrate)
-    - create JoinTable migrate (rails g migration CreateJoinTable table_names1 table_names2) …by alpha…
-    - schema migrate/test (rake db:migrate / rails dbconsole)
 
-- Test --ox--
-    - launch server (rails s)
-    - update README
+---
+---
+App Build Steps:
 
-- Models(Seeds) --ox--
-    - models update (app/models/name.rb)
-    - update seed.rb
-    - import/test (rake db:seed / rails dbconsole)
-    - model test (rails c >> Name.all)
+- touch server.js --xo--
 
-- Routes --x--
-    - route test (rake routes)
-    - route create (config/route.rb => resources :names)
+- npm init --o--
+    - 'enter' through all the prompts
 
-- Controller --o--
-    - method writeup (per controller)
-        - up to x7 (index, show, create, new, edit, update, delete)
+- express setup (npm install --save express) --o--
+    - server.js
+        - var express = require('express');
+        - var app = express();
+
+- set app port --o--
+    - server.js
+        - var port = process.env.PORT || 3000;
+
+- morgan setup (npm install --save morgan) --o--
+    - server.js
+        - var morgan = require('morgan');
+        - app.use(morgan('dev'));
+
+- bodyparser setup (npm install --save body-parser) --o--
+    - server.js
+        - var bodyParser = require('body-parser');
+        - app.use(bodyParser.urlencoded({ extended: false}));
+        - app.use(bodyParser.json());
+
+- mongoose setup (npm install --save mongoose) --o--
+    - server.js
+        - var mongoose = require('mongoose');
+        - mongoose.connect('mongodb://localhost/db_name');
+
+- md5 setup (npm install --save md5) --o--
+    - server.js
+        - var md5 = require('md5');
+
+- cookies setup (npm install --save cookie-parser) --o--
+    - server.js
+        - var cookieParser = require('cookie-parser');
+        - app.use(cookieParser());
+
+- mkdir public --o--
+    - server.js
+        - app.use(express.static('public'));
+    - touch public/index.html
+    - touch public/app.js
+
+- middleware setup --o--
+
+- CDN
+    - Handlebars URL --x--
+    - js-cookie URL --x--
+
+- models --x--
+    - mkdir models
+        - touch models/user.js
+        - touch models/task.js
+    - server.js
+        - var User = require('./models/user');
+        - var Task = require('./models/task');
+
+- test connection --X--
+    - launch server (nodemon)
+        
+- model build --o--
+    - user.js
+        - var mongoose = require('mongoose');
+        - var userSchema = new mongoose.Schema({ ... });
+            - link taskSchema
+        - var User = mongoose.model('User', userSchema);
+        - module.exports = User;
+        - embed tasks (ref Complaints)
+    - task.js
+        - var mongoose = require('mongoose');
+        - var taskSchema = new mongoose.Schema({ ... });
+        - var Task = mongoose.model('Task', taskSchema);
+        - module.exports = Task;
+        - ?embed users?
+
+- Story build --o--
+    - server: 
+        - server.js 
+            - TEST 
+    - client: --o--
+        - TEST
+        - index.html
+        - app.js
             - user 
-                - index (website landing) --x--
-                - show (profile) --x--
-            - note 
-                - index (all notes page) --x--
-                - show --x-- individual note page
+                - signup
+                - update
+                - delete
+            - task
+                - all
+                - new
+                - delete (auto delete when done)
 
-- Views --o--
-    - INDEX/SHOW/CREATE only to start
-        - user index/show --x--
-        - note index/show --o--
-    - folder create (mkdir app/views/names)
-    - views create (touch app/views/names/index.html.erb)
-        - x5 (_form, show, new, edit)
-    - visual framework updates
+- CSS --o--
 
-- Heroku
-    - setup
+- [seed 1 user + task --o--
+    - node server.js]
 
-- Test --ox--
-    - launch server (rails s)
-    - update README
 
-- Extras
-    - 
+---
+---
+Reference
+
+- Git merging
+    - https://github.com/ga-students/wdi_lettuce_students/blob/master/w08/d02/INSTRUCTOR/git_solo.md
+
+
+
+
+
+---
+---
+Comments
+
+- 
+
+
+
+
+
+
