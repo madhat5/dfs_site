@@ -97,9 +97,9 @@ MVP:
 ---
 App Build Steps:
 
-- touch server.js --xo--
+- touch server.js --x--
 
-- npm init --o--
+- npm init --x--
     - 'enter' through all the prompts
 
 - express setup (npm install --save express) --o--
@@ -111,18 +111,18 @@ App Build Steps:
     - server.js
         - var port = process.env.PORT || 3000;
 
-- morgan setup (npm install --save morgan) --o--
+- morgan setup (npm install --save morgan) --x--
     - server.js
         - var morgan = require('morgan');
         - app.use(morgan('dev'));
 
-- bodyparser setup (npm install --save body-parser) --o--
+- bodyparser setup (npm install --save body-parser) --x--
     - server.js
         - var bodyParser = require('body-parser');
         - app.use(bodyParser.urlencoded({ extended: false}));
         - app.use(bodyParser.json());
 
-- mongoose setup (npm install --save mongoose) --o--
+- mongoose setup (npm install --save mongoose) --x--
     - server.js
         - var mongoose = require('mongoose');
         - mongoose.connect('mongodb://localhost/db_name');
@@ -141,14 +141,11 @@ App Build Steps:
         - app.use(express.static('public'));
     - touch public/index.html
     - touch public/app.js
+    - touch public/style.css
 
 - middleware setup --o--
 
-- CDN
-    - Handlebars URL --x--
-    - js-cookie URL --x--
-
-- models --x--
+- models --o--
     - mkdir models
         - touch models/user.js
         - touch models/task.js
@@ -156,8 +153,16 @@ App Build Steps:
         - var User = require('./models/user');
         - var Task = require('./models/task');
 
-- test connection --X--
+- test connection --o--
+    - setup basic route
+    - setup basic index.html/app.js
     - launch server (nodemon)
+
+- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>< HARD STOP ><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+- CDN
+    - Handlebars URL --x--
+    - js-cookie URL --x--
         
 - model build --o--
     - user.js
