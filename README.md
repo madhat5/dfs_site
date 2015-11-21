@@ -19,6 +19,10 @@ Links:
     - http://espn.go.com/apis/devcenter/docs/
     - https://developer.yahoo.com/fantasysports/
     - http://developer.cbssports.com/documentation/api/files/sports
+    - https://probasketballapi.com/docs/draftkings/players
+    - http://armchairanalysis.com/data.php
+    - http://www.fantasyfootballnerd.com/fantasy-football-api
+    - http://www.rotowire.com/rss/
 ---
 Technical Requirements:
 
